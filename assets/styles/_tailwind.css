@@ -1,0 +1,86 @@
+@import 'tailwindcss';
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+    --color-*: initial;
+
+    /* Primary scale */
+    --color-brand-50: oklch(0.96 0.020359 276.9584);
+    --color-brand-100: oklch(0.92 0.038268 279.1688);
+    --color-brand-200: oklch(0.86 0.0726 279.59);
+    --color-brand-300: oklch(0.76 0.1231 279.49);
+    --color-brand-400: oklch(0.63 0.2037 279.74);
+    --color-brand-500: oklch(0.58 0.2188 280.68);
+    --color-brand-600: oklch(0.52 0.2387 281.04);
+    --color-brand-700: oklch(0.46 0.223 281.49);
+    --color-brand-800: oklch(0.4 0.185 281.62);
+    --color-brand-900: oklch(0.36 0.1424 282.73);
+    --color-brand-950: oklch(0.26 0.0917 286.01);
+    --color-brand: var(--color-brand-400);
+
+    /* Grey scale */
+    --color-grey-50: oklch(0.98 0.0034 247.86);
+    --color-grey-100: oklch(0.94 0.0071 268.55);
+    --color-grey-200: oklch(0.88 0.0148 264.49);
+    --color-grey-300: oklch(0.82 0.0215 261.76);
+    --color-grey-400: oklch(0.73 0.0311 264.36);
+    --color-grey-500: oklch(0.65 0.0419 269.21);
+    --color-grey-600: oklch(0.59 0.0486 272.21);
+    --color-grey-700: oklch(0.54 0.0489 276.12);
+    --color-grey-800: oklch(0.48 0.0405 277.66);
+    --color-grey-900: oklch(0.42 0.0303 275.21);
+    --color-grey-950: oklch(0.36 0.038 294.86);
+    --color-grey: var(--color-grey-200);
+
+    --color-black: oklch(0 0 0);
+    --color-white: oklch(100% 0 0);
+
+    /* Red Scale */
+    --color-red-50: oklch(0.97 0.0129 17.38);
+    --color-red-100: oklch(0.94 0.0309 17.72);
+    --color-red-200: oklch(0.88 0.0593 18.33);
+    --color-red-300: oklch(0.81 0.1035 19.57);
+    --color-red-400: oklch(0.73 0.1535 21.58);
+    --color-red-500: oklch(0.64 0.2059 25.22);
+    --color-red-600: oklch(0.58 0.2136 27.23);
+    --color-red-700: oklch(0.5 0.1889 27.41);
+    --color-red-800: oklch(0.44 0.1613 26.9);
+    --color-red-900: oklch(0.4 0.1331 25.72);
+    --color-red-950: oklch(0.26 0.0886 26.04);
+    --color-red: var(--color-red-400);
+
+    --font-sans:
+            'Inter', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+            'Segoe UI Emoji', 'Segoe UI Symbol';
+
+    /*--font-weight-normal: 300;*/
+    /*--font-weight-medium: 400;*/
+    /*--font-weight-semibold: 500;*/
+    /*--font-weight-bold: 700;*/
+
+
+    /* Grid Templates */
+    --grid-template-row-frame: min-content 1fr;
+    --grid-template-row-content: min-content 1fr min-content;
+
+    --grid-template-cols-frame: min-content 1fr;
+    --grid-template-cols-content: minmax(0,min-content) minmax(400px, 1fr);
+
+    /* Container Size */
+    --container-2xs: 16rem;
+
+    /* Box Shadows */
+    --shadow-solid: 0 0 0 2px var(--tw-shadow-color);
+    --shadow-solid-lg: 0 0 0 0.5rem var(--tw-shadow-color);
+
+    --text-xs: 0.6rem;
+    --text-sm: 0.75rem;
+    --text-base: 0.875rem;
+    --text-lg: 1rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.75rem;
+    --text-4xl: 2rem;
+    --text-5xl: 2.5rem;
+}

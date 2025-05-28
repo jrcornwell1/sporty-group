@@ -1,0 +1,84 @@
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+    name: 'nexus-point-light';
+    default: true; /* set as default */
+    prefersdark: false; /* set as default dark mode (prefers-color-scheme:dark) */
+    color-scheme: light; /* color of browser-provided UI */
+
+    --color-base-100: oklch(97.7% 0.01 239.82);
+    --color-base-200: oklch(94.44% 0.01 240.96);
+    --color-base-300: oklch(89.79% 0.03 240.68);
+    --color-base-content: var(--color-grey-950);
+    --color-primary: var(--color-brand-600);
+    --color-primary-content: oklch(98% 0.01 240);
+    --color-secondary: var(--color-grey-100);
+    --color-secondary-content: var(--color-grey-700);
+    --color-accent: var(--color-brand);
+    --color-accent-content: var(--color-brand-100);
+    --color-neutral: var(--color-grey-900);
+    --color-neutral-content: var(--color-grey-100);
+    --color-success: var(--color-green-600);
+    --color-success-content: var(--color-green-100);
+    --color-warning: var(--color-yellow-600);
+    --color-warning-content: var(--color-yellow-100);
+    --color-error: var(--color-red-600);
+    --color-error-content: var(--color-red-200);
+    --color-info-content: var(--color-blue-100);
+
+    /* border radius */
+    --radius-selector: 1rem;
+    --radius-field: 0.25rem;
+    --radius-box: 0.75rem;
+
+    /* base sizes */
+    --size-selector: 0.25rem;
+    --size-field: 0.25rem;
+
+    /* border size */
+    --border: 1px;
+
+    /* effects */
+    --depth: 0;
+    --noise: 0;
+}
+@plugin "daisyui/theme" {
+    name: 'nexus-point-light';
+    default: false; /* set as default */
+    prefersdark: true; /* set as default dark mode (prefers-color-scheme:dark) */
+    color-scheme: dark; /* color of browser-provided UI */
+
+    --color-base-100: var(--color-grey-50);
+    --color-base-200: var(--color-grey-100);
+    --color-base-300: var(--color-grey-300);
+    --color-base-content: var(--color-grey-950);
+    --color-primary: var(--color-brand);
+    --color-primary-content: oklch(98% 0.01 240);
+    --color-secondary: var(--color-grey-700);
+    --color-secondary-content: oklch(98% 0.01 200);
+    --color-accent: var(--color-brand);
+    --color-accent-content: var(--color-brand-100);
+    --color-neutral: var(--color-grey-950);
+    --color-neutral-content: var(--color-grey-50);
+    --color-success: var(--color-green);
+    --color-success-content: var(--color-green-100);
+    --color-warning: var(--color-yellow);
+    --color-warning-content: var(--color-orange-100);
+    --color-error: var(--color-red);
+    --color-error-content: var(--color-red-100);
+
+    /* border radius */
+    --radius-selector: 1rem;
+    --radius-field: 0.25rem;
+    --radius-box: 0.75rem;
+
+    /* base sizes */
+    --size-selector: 0.25rem;
+    --size-field: 0.25rem;
+
+    /* border size */
+    --border: 1px;
+
+    /* effects */
+    --depth: 0;
+    --noise: 0;
+}

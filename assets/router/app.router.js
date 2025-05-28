@@ -27,7 +27,7 @@ const router = createRouter({
                   path: '',
                   name: ROUTE.ALL_LEAGUES,
                   components: {
-                    content: () => import('../components/ViewAppExample.vue'),
+                    content: () => import('../components/ViewAllLeagues.vue'),
                   },
                 },
               ],

@@ -5,4 +5,9 @@ export default {
     app.get('/all_leagues.php', {
       params: params,
     }),
+
+  getSelectedSeasonsBadges: (params) =>
+    app.get('/search_all_seasons.php', {
+      params: params,
+    }),
 };

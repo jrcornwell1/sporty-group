@@ -1,1 +1,1 @@
-export { default as Leagues } from './services/leagues.api.js';
+export { default as Leagues } from './services/leagues.services.js';

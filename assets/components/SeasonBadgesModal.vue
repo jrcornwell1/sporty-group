@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch } from 'vue';
+import { useQuery } from '@tanstack/vue-query';
 import { Leagues } from '@/api/index.js';
-import IconView from '@/icons/view.svg';
 
 const props = defineProps({
   leagueId: {
@@ -10,51 +10,50 @@ const props = defineProps({
   },
 });
 
-const seasons = ref(null);
-const isLoading = ref(false);
 const modalOpen = ref(false);
 
-const fetchSeasons = async () => {
-  isLoading.value = true;
-  try {
-    const { data } = await Leagues.getSelectedSeasonsBadges({ badge: 1, id: props.leagueId });
-    seasons.value = data.seasons || [];
-  } catch (error) {
-    console.error(error);
-    seasons.value = [];
-  } finally {
-    isLoading.value = false;
-  }
-};
+const {
+  data: seasons,
+  isLoading,
+  refetch,
+} = useQuery({
+  queryKey: ['seasons', props.leagueId],
+  queryFn: async () => {
+    const { data } = await Leagues.getSelectedSeasonsBadges({
+      badge: 1,
+      id: props.leagueId,
+    });
+    return data.seasons || [];
+  },
+  enabled: false,
+  staleTime: Infinity,
+  cacheTime: 1000 * 60 * 30,
+  refetchOnWindowFocus: false,
+  refetchOnMount: false,
+  refetchOnReconnect: false,
+});
 
-const handleChange = (event) => {
+const handleChange = async (event) => {
   modalOpen.value = event.target.checked;
-  if (modalOpen.value) {
-    fetchSeasons();
-  } else {
-    // Reset seasons when modal closes
-    seasons.value = null;
+  if (modalOpen.value && (!seasons?.value || seasons.value.length === 0)) {
+    await refetch(); // Only refetch if we don't have data
   }
 };
 
-// Watch for leagueId changes to reset the state
 watch(
   () => props.leagueId,
   () => {
-    seasons.value = null;
     modalOpen.value = false;
   },
 );
 </script>
 
 <template>
-  <label :for="`modal_${leagueId}`" class="btn gap-0 btn-xs btn-primary"
-    ><IconView class="h-4" /> Badges</label
-  >
+  <label :for="`modal_${leagueId}`" class="btn gap-0 btn-xs btn-primary"> Badges</label>
 
   <input :id="`modal_${leagueId}`" type="checkbox" class="modal-toggle" @change="handleChange" />
   <div class="modal" role="dialog">
-    <div class="modal-box max-w-5xl">
+    <div class="modal-box max-w-5xl bg-grey-100">
       <!-- Close button -->
       <label
         :for="`modal_${leagueId}`"
@@ -79,15 +78,7 @@ watch(
           class="flex flex-col items-center gap-2"
         >
           <template v-if="season.strBadge">
-            <img
-              :src="season.strBadge"
-              :alt="season.strSeason"
-              class="h-24 w-24 object-contain"
-              @error="
-                $event.target.src =
-                  'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiBmaWxsPSIjZjNmNGY2Ii8+PHRleHQgeD0iNDgiIHk9IjQ4IiBkeT0iLjFlbSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgZm9udC1zaXplPSIxNiIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZpbGw9IiM5Y2EzYWYiPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg=='
-              "
-            />
+            <img :src="season.strBadge" :alt="season.strSeason" class="h-24 w-24 object-contain" />
           </template>
           <template v-else>
             <div

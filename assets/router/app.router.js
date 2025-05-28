@@ -6,8 +6,8 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: '_root',
-      redirect: { name: ROUTE.ROUTE_EXAMPLE },
+      name: ROUTE.$_ROOT,
+      redirect: { name: ROUTE.ALL_LEAGUES },
     },
     {
       path: '/app',
@@ -20,12 +20,12 @@ const router = createRouter({
           component: () => import('../components/AppFramePage.vue'),
           children: [
             {
-              path: 'primary-route',
-              name: ROUTE.$_APP_PRIMARY_ROUTE,
+              path: 'all-leagues',
+              name: ROUTE.$_APP_ALL_LEAGUES,
               children: [
                 {
                   path: '',
-                  name: ROUTE.ROUTE_EXAMPLE,
+                  name: ROUTE.ALL_LEAGUES,
                   components: {
                     content: () => import('../components/ViewAppExample.vue'),
                   },
@@ -50,7 +50,7 @@ export const initRouter = (pinia) => {
      * Only run these if it's a hard page load
      */
     if (isHardRefresh) {
-    //
+      //
     }
   });
 

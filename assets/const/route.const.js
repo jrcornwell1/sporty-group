@@ -1,8 +1,9 @@
 export default {
+  $_ROOT: '$_root',
   $_APP: '$_app',
 
-  $_APP_PRIMARY_ROUTE: 'appPrimaryRoute',
-  ROUTE_EXAMPLE: 'routeExample',
+  $_APP_ALL_LEAGUES: 'appAllLeagues',
+  ALL_LEAGUES: 'allLeagues',
 
   $_PRIMARY_LAYOUT: 'primary_layout',
 };

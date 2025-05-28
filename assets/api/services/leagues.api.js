@@ -1,8 +1,8 @@
 import { app } from '../connections/app.connections.js';
 
 export default {
-  getExample: (params) =>
-    app.get('/example', {
+  getAllLeagues: (params) =>
+    app.get('/all_leagues.php', {
       params: params,
     }),
 };

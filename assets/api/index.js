@@ -1,1 +1,1 @@
-export { default as Example } from './services/example.api.js';
+export { default as Leagues } from './services/leagues.api.js';

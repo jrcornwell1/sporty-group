@@ -1,6 +1,6 @@
 @plugin "daisyui";
 @plugin "daisyui/theme" {
-    name: 'nexus-point-light';
+    name: 'sporty-group-light';
     default: true; /* set as default */
     prefersdark: false; /* set as default dark mode (prefers-color-scheme:dark) */
     color-scheme: light; /* color of browser-provided UI */
@@ -42,7 +42,7 @@
     --noise: 0;
 }
 @plugin "daisyui/theme" {
-    name: 'nexus-point-light';
+    name: 'sporty-group-light';
     default: false; /* set as default */
     prefersdark: true; /* set as default dark mode (prefers-color-scheme:dark) */
     color-scheme: dark; /* color of browser-provided UI */

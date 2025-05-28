@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-const baseUrl = '';
+const baseUrl = 'https://www.thesportsdb.com/api/v1/json';
+const key = '/3';
 
 export const app = axios.create({
-  baseURL: baseUrl,
+  baseURL: baseUrl + key,
 });
 
 app.interceptors.request.use(

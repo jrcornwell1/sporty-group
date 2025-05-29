@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, toRefs, watch } from 'vue';
 import { useQuery } from '@tanstack/vue-query';
 import { Leagues } from '@/api/index.js';
 
@@ -10,23 +10,25 @@ const props = defineProps({
   },
 });
 
+const { leagueId } = toRefs(props);
 const modalOpen = ref(false);
+const lastFetchedId = ref(null);
 
 const {
   data: seasons,
   isLoading,
   refetch,
 } = useQuery({
-  queryKey: ['seasons', props.leagueId],
+  queryKey: ['seasons', leagueId.value],
   queryFn: async () => {
     const { data } = await Leagues.getSelectedSeasonsBadges({
       badge: 1,
-      id: props.leagueId,
+      id: leagueId.value,
     });
     return data.seasons || [];
   },
   enabled: false,
-  staleTime: Infinity,
+  staleTime: Infinity, // Keep infinite staleTime for caching
   cacheTime: 1000 * 60 * 30,
   refetchOnWindowFocus: false,
   refetchOnMount: false,
@@ -35,13 +37,17 @@ const {
 
 const handleChange = async (event) => {
   modalOpen.value = event.target.checked;
-  if (modalOpen.value && (!seasons?.value || seasons.value.length === 0)) {
-    await refetch(); // Only refetch if we don't have data
+  if (modalOpen.value) {
+    // Only refetch if we're looking at a different league or don't have data
+    if (lastFetchedId.value !== leagueId.value || !seasons?.value?.length) {
+      await refetch();
+      lastFetchedId.value = leagueId.value;
+    }
   }
 };
 
 watch(
-  () => props.leagueId,
+  () => leagueId.value,
   () => {
     modalOpen.value = false;
   },

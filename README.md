@@ -61,3 +61,18 @@ Once the development server is running, open your browser and navigate to `http:
     - prettier-plugin-tailwindcss (v0.6.11)
     - @vue/eslint-config-prettier (v10.2.0)
 
+## 🤖 AI Tools & Design Decisions
+
+### AI Integration
+- [@vue/devtools](https://devtools.vuejs.org/) with AI-powered debugging capabilities
+- [GitHub Copilot](https://github.com/features/copilot) for AI-assisted development
+- Custom AI-powered components for enhanced user experience
+
+### Design Philosophy
+- **Component-Based Architecture**: Leveraging Vue 3's Composition API for maintainable and reusable components
+- **Type Safety**: Utilizing TypeScript for enhanced code reliability and developer experience
+- **Responsive Design**: Mobile-first approach using Tailwind CSS breakpoints
+- **Performance Optimization**:
+  - Code splitting and lazy loading
+  - State management optimization with Pinia
+  - Efficient data caching with TanStack Query
